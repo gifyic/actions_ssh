@@ -1,6 +1,7 @@
 name: debugger-action
 on:
-  push:
+  watch:
+    types: [started]
     branches:
       - test
 jobs:
