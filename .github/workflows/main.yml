@@ -1,19 +1,12 @@
-name: onedrive_upload
+name: debugger-action
 on:
-  watch:
-    types: [started]
-    
-env: 
-  TZ: Asia/Shanghai
-
+  push:
+    branches:
+      - test
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-       - uses: shaowenchen/debugger-action@v2
-         name: debugger
-         timeout-minutes: 900
-         continue-on-error: true
-         with:
-           ngrok_token: ${{ secrets.NGROK_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Setup Debug Session
+        uses: csexton/debugger-action@master
